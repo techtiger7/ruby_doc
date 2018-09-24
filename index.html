@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ruby Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="navbar" class="navbar col-12 col-md-3 col-xl-2 bg-light">
+        <header class="navbar-header">
+          <h1>Ruby Doc.</h1>
+          <p>By Tom Dickman</p>
+        </header>
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Introduction">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Printing">Printing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Storing_Input">Storing Input</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Variables">Variables</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link text-info" href="#Classes">Classes</a>
+          </li>
+                  <li class="nav-item">
+            <a class="nav-link text-info" href="#Methods">Methods</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Class_Instances">Class Instances</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Initializations">Initializations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Inheritance">Inheritance</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link text-info" href="#Super">Super</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" href="#Public_Private_Protected">Public, Private and Protected</a>
+          </li>
+        </ul>
+      </nav>
+      <main id="main-doc" data-spy="scroll" data-target="#navbar" data-offset="0" class="col-12  col-md-9 col-xl-10" >
+        <section id="Introduction" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Introduction</h3>
+          </header>
+          <div class="card-body">
+            <p>The aim of this documentation is to provide simple instructions for an intermediate to experienced programmer to get started with Ruby, it is not for beginner programmers, but more for those coming from other languages who wish to learn Ruby and don't want to trawl through all the basic information describing "what is a variable" and "how do I write a function?". This doesn't explain how to set up your Ruby environment, just details on the syntax so you have enough to get started writing code, the rest is on you.</p>
+            <p>As an interpreted language (like JavaScript) Ruby code executed at run time, straight from the instructions within our code, this is important to remember as it effects the manner in which we write code, and the efficiency of Ruby.</p>
+            <p>If there is information missing within these instructions, or something is incorrect, please let me know, I have developed this myself while learning Ruby coming from Java, so <strong>don't use this as a definitive guide, just a starting point</strong> and seek further clarification from <a href="https://stackoverflow.com/" target="_blank">Stackoverflow</a>, <a href="https://www.tutorialspoint.com/" target="_blank">Tutorialspoint</a> or any of your other favourite web resources.</p>
+        </section>
+          <section id="Printing" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Printing</h3>
+          </header>
+          <div class="card-body">
+            <p>When we want to print something to standard output in Ruby, we have two main options available to us, <code>puts</code> which will 'put' the passed in string value to standard output (this can also be attached to an Object like a <code>File</code> instance as a method for writing to it, but this is more advanced usage.) This string will be followed by a line return character, so any further content will be written to the next line.</p>
+            <p>Alternatively we can use the <code>print</code> keyword, which will 'print' the passed in value to standard output, but will not include a line return, so if we 'print' two things one after the other, they will appear on the same line.</p>
+            <p>Puts example:</p>
+            <pre>
+              <code>puts "Hi, I'm Tom."</code>
+              <code>puts "I love Ruby."</code>
+              <code># Hi, I'm Tom.</code>
+              <code># I love Ruby.</code>
+            </pre>
+            <p>Print example:</p>
+            <pre>
+              <code>print "Hi, I'm Tom."</code>
+              <code>print "I love Ruby."</code>
+              <code># Hi, I'm Tom.I love Ruby.</code>
+            </pre>
+          </div>
+        </section>
+          <section id="Storing_Input" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Storing Input</h3>
+          </header>
+          <div class="card-body">
+            <p>Another key requirement for any programming language is user inputs, these are enabled in Ruby by the <code>gets</code> keyword, which reads from standard input and can write this to a variable.</p>
+            <p>Gets example:</p>
+            <pre>
+              <code>puts "Please enter your first name:"</code>
+              <code>gets first_name</code>
+              <code>puts "Hi there " + first_name + "!"</code>
+              <code></code>
+              <code># Please enter your first name:</code>
+              <code># Tom    # User inputs "Tom" and presses Enter</code>
+              <code># Hi there Tom!</code>
+            </pre>
+          </div>
+        </section>
+        <section id="Variables" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Variables</h3>
+          </header>
+          <div class="card-body">
+            <p>Like most other programming languages, Ruby lets you define variables for storing data. There are four main types of variables, each with varying scope levels, these are:</p>
+            <ul>
+              <li><strong>Local variable</strong> scoped to the method or class it is defined in. eg. <code>my_var</code></li>
+              <li><strong>Instance variable</strong> scoped to this entire class instance, any method in this instance can access this. eg. <code>@my_var</code></li>
+              <li><strong>Class variable</strong> scoped to every instance of this class. eg. <code>@@my_var</code></li>
+              <li><strong>Global variable</strong> scoped to everything. eg. <code>$my_var</code></li>
+              <li>Note: You can access any variable using a hashtag, for example <code>#my_var</code>
+            </ul>
+          </div>
+        </section>
+        <section id="Classes" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Classes</h3>
+          </header>
+          <div class="card-body">
+            <p>Ruby is an Object Oriented programming language, with Classes which are defined based on the keyword <code>class</code> and a Capital case label.</p>
+            <p>For example:</p>
+            <pre>
+              <code>class Student</code>
+              <code>&nbsp;&nbsp;<em>Body of class</em></code>
+              <code>end</code>
+            </pre>
+            <p>As opposed to using curly brackets as in Java or other languages, Ruby indicates the termination of a block of code with the keyword <code>end</code>.</p>
+        </section>
+        <section id="Methods" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Methods</h3>
+          </header>
+          <div class="card-body">
+            <p>Methods define the behaviours of classes in Ruby, in the same manner they do for other OOP languages, in order to define these methods in a class we utilise the <code>def</code> keyword, followed by a label for the name of the method.</p>
+            <p>For example:</p>
+            <pre>
+              <code>class Student</code>
+              <code>&nbsp;&nbsp;@@number_of_students = 0</code>
+              <code></code>
+              <code>&nbsp;&nbsp;def count_students</code>
+              <code>&nbsp;&nbsp;&nbsp;&nbsp;puts number_of_students</code>
+              <code>&nbsp;&nbsp;end</code>
+              <code>end</code>
+            </pre>
+            <p>Once again, Ruby indicates the termination of a block of code with the keyword <code>end</code>.</p>
+          </div>
+        </section>
+        <section id="Class_Instances" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Class Instances</h3>
+          </header>
+          <div class="card-body">
+            <p>To define an instance of a class (or to create an object of particular class) we utilise the <code>new</code> keyword.</p>
+            <p>For example:</p>
+              <code>&nbsp;&nbsp;student1 = Student.new</code>
+            <p>This creates a local variable named 'student1' which references a new instance Object of the class 'Student'.
+          </div>
+        </section>
+            <section id="Initializations" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Initializations</h3>
+          </header>
+          <div class="card-body">
+            <p>Class constructors in Ruby are referred to as <em>initializations</em> and need to be explicitly declared within the class by creating a method with the label of <code>initialize</code> so that new class instance parameters are defined for set up of an object.</p>
+            <p>For example:</p>
+              <pre>
+                <code>class Student</code>
+                <code>&nbsp;&nbsp;@@number_of_students</code>
+                <code></code>
+                <code>&nbsp;&nbsp;def initialize(first_name, last_name, student_id)</code>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;@first_name = first_name</code>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;@last_name = last_name</code>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;@student_id = student_id</code>
+                <code>&nbsp;&nbsp;end</code>
+                <code>end</code>
+              </pre>
+          </div>
+        </section>
+            <section id="Inheritance" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Inheritance</h3>
+          </header>
+          <div class="card-body">
+            <p>Class inheritance is controlled in Ruby by the <code>&lt;</code> symbol.</p>
+            <p>For example:</p>
+              <pre>
+                <code>class Dog</code>
+                <code>&nbsp;&nbsp;@legs = 4</code>
+                <code>end</code>
+                <code>class Poodle &lt; Dog</code>
+                <code>curly = Poodle.new</code>
+                <code>curly.instance_variable_get("@legs")</code>
+              </pre>
+            <p>The instance of the <em>Poodle</em> class referenced by the local variable <em>curly</em> will return the value of <code>4</code> for @legs, because this has been inherited from the class Dog where @legs is already 4. The same applies to methods, these will be inherited too, and can also be overridden if we define them again within the class we're creating.</p>
+          </div>
+        </section>
+        </section>
+            <section id="Super" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Super</h3>
+          </header>
+          <div class="card-body">
+            <p>When a class is inherited from another class, it has all the same methods, these can be overwritten through the definition of a new method with the same name. Alternatively, if we want to extend the existing method, we can do so through use of the <code>super</code> keyword, which returns the content of same method in the the superclass (parent class from which this class inherited its methods).</p>
+            <p>For example:</p>
+              <pre>
+                <code>class Dog</code>
+                <code>&nbsp;&nbsp;def initialize(no_of_legs)</code>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;@no_of_legs = no_of_legs</code>
+                <code>&nbsp;&nbsp;end</code>
+                <code>end</code>
+                <code></code>
+                <code>class Poodle &lt; Dog</code>
+                <code>&nbsp;&nbsp;def initialize(no_of_legs, is_minature)</code>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;super</code>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;@is_minature = is_minature</code>
+                <code>&nbsp;&nbsp;end</code>
+                <code>end</code>
+              </pre>
+            <p>Here the superclass of Dogs has an initialize method which only takes one parameter <code>no_of_legs</code> to store the number of legs the dog instance has, but we have overridden this on the inherited class of Poodle, whereby we added the parameter of <code>is_minature</code> to the Poodle class, so we can store whether each Poodle instance is a minature poodle or not.</p>
+            <p>By using the <code>super</code> keyword, access the code within the initialize method of the superclass Dog, hence we only have to store one instance variable of <code>@is_minature</code> as the other parameter is handled by the inheritance.</p>
+          </div>
+        </section>
+        <section id="Public_Private_Protected" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Public, Private and Protected</h3>
+          </header>
+          <div class="card-body">
+            <p>Similar to other OOP languages, Ruby has various protection levels for methods in order to prevent access outside of a class or object, the three levels available are:</p>
+            <ul>
+              <li>public</li>
+              <li>protected</li>
+              <li>private</li>
+            </ul>
+            <p>Unlike other languages, you do not need to set the accessibility of instance variables, this happens implicitly, with all instance variables being private, and all methods being public. To change this, access to these variables needs to be dictated through the <code>public</code>, <code>private</code> and <code>protected</code> keywords.<p>
+            <p>Public methods 
+              <code>&nbsp;&nbsp;student1 = Student.new</code>
+            <p>This creates a local variable named 'student1' which references a new instance Object of the class 'Student'.
+          </div>
+        </section>
+        <section id="Getters_and_Setters" class="card m-2 main-section">
+          <header>
+            <h3 class="card-header">Getters and Setters</h3>
+          </header>
+          <div class="card-body">
+            <p>If you are familiar with OOP, you probably know about getters and setters, essentially these are methods which allow a class instance state to be interacted with so that it may be changed or simply returned for use elsewhere. This can be done in a couple of ways using Ruby, one way is explicitly through a method, the other is by using <code>attr_reader</code>, <code>attr_writer</code> and <code>attr_accessor</code></p>
+            <ul>
+              <li>public</li>
+              <li>protected</li>
+              <li>private</li>
+            </ul>
+            <p>Unlike other languages, you do not need to set the accessibility of instance variables, this happens implicitly, with all instance variables being private, and all methods being public. To change this, access to these variables needs to be dictated through the <code>public</code>, <code>private</code> and <code>protected</code> keywords.<p>
+            <p>Public methods 
+              <code>&nbsp;&nbsp;student1 = Student.new</code>
+            <p>This creates a local variable named 'student1' which references a new instance Object of the class 'Student'.
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
